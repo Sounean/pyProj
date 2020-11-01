@@ -351,7 +351,7 @@ print(set1.symmetric_difference(set2))  # {1, 2, 3, 6, 7, 8}
 
 # ## 5.练习
 # In[ ]:
-import random,string
+import random,string,numpy as np
 # 列表  
 # *1. 有两个列表：l1 = [11, 22, 33]，l2 = [22, 33, 44]，获取内容相同的元素列表，获取l1中有， l2中没有的元素列表，获取l1 和 l2 中内容都不同的元素
 l1=[11,22, 33];l2=[22,33,44]
@@ -419,16 +419,58 @@ print("100以内所有整数构成的列表：{}".format([var for var in range(1
 # *11.使用列表推到式得出:0-30间能被3整除的数
 print("0-30间能被3整除的数：{}".format([var for var in range(1,31) if var%3==0]))
 # In[ ]:
-# *12.求M,N中矩阵对应元素的和元素的乘积    (提示：使用2个for遍历)   
-# m =[[1,2,3],  [4,5,6],  [7,8,9]] ，n =[[2,2,2],  [3,3,3], [4,4,4]]  
+# *12.求M,N中矩阵对应元素的和与元素的乘积    (提示：使用2个for遍历)
+# m =[[1,2,3],  [4,5,6],  [7,8,9]] ，n =[[2,2,2],  [3,3,3], [4,4,4]]
+# 用两个for遍历的方式：
+def forSum(m,n):
+    listSum=[]
+    return listSum
+def forTimes(m,n):
+    listTimes=[]
+    return listTimes
+# 用numpy库来计算
+def numpySum(m,n):
+    listSum=[]
+    return listSum
+def numpyTimes(m,n):
+    listTimes=[]
+    return listTimes
+
+
+
+
+
+
+
+
+
+
 # In[ ]:
 # *13.找到嵌套列表中名字含有两个‘e’的所有名字：names=[['Tom','Billy','Jefferson','Andrew','Wesley','Steven','Joe'],['Alice','Jill','Ana','Wendy','Jennifer','Sherry','Eva']]   
+names=[['Tom','Billy','Jefferson','Andrew','Wesley','Steven','Joe'],['Alice','Jill','Ana','Wendy','Jennifer','Sherry','Eva']]
+print("嵌套列表中名字含有两个'2'的所有名字组成的列表：{}".format([var for i in names for var in i if var.count('e')==2]))
 # In[ ]:
-# *14.过滤掉长度小于3的字符串列表，并将剩下的转换成大写字母names = ['Bob','Tom','alice','Jerry','Wendy','Smith']     
+# *14.过滤掉长度小于3的字符串列表，并将剩下的转换成大写字母names = ['Bob','Tom','alice','Jerry','Wendy','Smith']
+names = ['Bob','Tom','alice','Jerry','Wendy','Smith']
+print("转换后的列表中的名字有：{}".format([i for i in names if len(i)>=3]).upper() )
 # In[ ]:
 # *15.对列表中每个数值逐个减去均值
+
+
+
+
+
+
+
+
+
+
 # In[ ]:
 # *16.按照下面的要求实现对列表的操作：1). 产生一个列表，其中有 40 个元素，每个元素是 50 到 100 的一个随机整数。2). 如果这个列表中的数据代表着某个班级 40 人的分数，请计算成绩低于平均分的学生人数。3). 对上面的列表元素从大到小排序并输出li.sort(reverse=True)   
+listOut=[random.randint(50,100) for i in range(40)];listOut.sort()
+print("（1）中要的列表为：{}".format(listOut))
+print("（2）中问题成绩低于平均分的人数为：{}".format(len([i for i in listOut if i<np.mean(listOut)])))
+print("(3)中的问题中所要的从小到大排序为：{}".format(listOut))
 # In[ ]:
 # *17.编写用户登陆系统，要求如下:
 # 系统里面有多个用户，用户的信息目前保存在列表里面users = ['root','westos'], passwd = ['123','456']，用户登陆(判断用户登陆是否成功）
@@ -436,25 +478,78 @@ print("0-30间能被3整除的数：{}".format([var for var in range(1,31) if va
 # 2).如果存在，判断用户密码是否正确，如果正确，登陆成功，退出循环，如果密码不正确，重新登陆，总共有三次机会登陆
 # 3).如果用户不存在
 # 重新登陆，总共有三次机会
+uers=['root','westos'];passwd=['123','456']
+class dropExcept(Exception):pass
+try:
+    for i in range(3):
+        inputUser = input("请输入用户名：");inputPasswd = input("请输入密码：")
+        for user in uers:
+            if user == inputUser:
+                if inputPasswd == passwd[inputUser.index(user)]:raise dropExcept
+                else:print("密码错误")
+            else:print("用户名错误")
+    else:print("登陆失败")
+except dropExcept:print("登陆成功")
 # In[ ]:
 # 元组  
-# *18. 有以下列表，nums = [2, 7, 11, 15, 1, 8]，请找到列表中任意相加等于9的元素集合，如：[(8, 1), (4, 5)] 
+# *18. 有以下列表，nums = [2, 7, 11, 15, 1, 8]，请找到列表中任意相加等于9的元素集合，如：[(8, 1), (4, 5)]
+nums = [2, 7, 11, 15, 1, 8]
+print("满足条件的集合有：{}".format([(nums[i],nums[j]) for i in range(0,len(nums)) for j in range(i,len(nums)) if nums[i] + nums[j] == 9]))
 # In[ ]:
-# *19.求(x,y)其中x是0-5之间的偶数，y是0-5之间的奇数组成的元祖列表
+print("题目所求的元组列表为：{}".format([(x,y) for x in range(5) for y in range(5) if x%2==0 if y%2!=0]))
 # In[ ]:
 # 字典  
 # *20 创建一个空字典，输入学生姓名和成绩，并一一对应，当输入#退出
+studentDict={}
+def drop(str):
+    if str=="#":
+        raise dropExcept
+class dropExcept(Exception):pass
+try:
+    while True:
+        studentName=input("学生姓名：");drop(studentName)
+        studentScore=input("学生成绩:");drop(studentScore)
+        studentDict[studentName]=studentScore
+except dropExcept:
+    print("退出新增学生信息！");
+    print("学生姓名\t\t学生成绩")
+    for key in studentDict:
+        print("{}\t\t\t\t{}".format(key,studentDict[key]))
 # In[ ]:
-# *21. 有如下值集合[11,22,33,44,55,66,77,88,99,90], 将所有大于66的值保存至字典的第一个key中，将小于66值保存至第二个key的值中. 
+# *21. 有如下值集合[11,22,33,44,55,66,77,88,99,90], 将所有大于66的值保存至字典的第一个key中，将小于66值保存至第二个key的值中.
+listInput=[11,22,33,44,55,66,77,88,99,90]
+key1List=[]
+key2List=[]
+for var in listInput:
+    if var>66:key1List.append(var)
+    else:key2List.append(var)
+outDict={'key1':key1List,'key2':key2List}
+outDict
 # In[ ]:
 # *22.统计重复单词的次数：此处认为单词之间以空格为分隔符，并且不包含,和. 要求用户输入一个英文句子，打印出每个单词及其重复的次数
+# inputSentense
+# inputList=inputSentense
+inputList=input("请输入一个英文句子：").replace(',',' ').replace('.',' ').split()
+inputDict={}
+for var in inputList:
+    inputDict[var]=inputList.count(var)
+for key in inputDict:
+    print("英语单词：{0}出现的次数:{1}".format(key,inputDict[key]))
 # In[ ]:
 # *23.数字重复统计。随机生成1000个整数，数字的范围[20，100]，升序输出所有的不同的数字及其每个数字重复的次数。
+inputList=[random.randint(20,100) for i in range(1000)];inputList.sort()
+outputDict={var:inputList.count(var) for var in inputList}
+for key in outputDict:
+    print("数字:{}重复的次数为：{}".format(key,outputDict[key]))
 # In[ ]:
 # 集合  
 # *24. 明明想在学校中请一些同学一起做一项问卷调查，为了实验的客观性,他先用计算机生成了N个1～1000之间的随机整数(N<=1000),N是用户输入的，对于其中重复的数字，只保留一个，把其余相同的数字去掉，不同的数对应着不同的学生的学号，然后再把这些数从小到大排序，按照排好的顺序去找同学做调查，请你协助明明完成“去重”与排序工作. 
+try:
+    inputN = int(input("请输入小于等于1000的数:"))
+    if inputN > 1000 or inputN <= 0: raise ValueError
+    listOnput=list(set([random.randint(1,1000) for i in range(inputN)]));listOnput.sort()
+    print(listOnput)
+except ValueError:print("请输入小于等于1000的正整数")
 
 # In[ ]:
-
-
 
