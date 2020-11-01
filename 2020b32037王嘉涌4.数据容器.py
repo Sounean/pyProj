@@ -358,12 +358,14 @@ l1=[11,22, 33];l2=[22,33,44]
 print("内容相同的元素有：{}".format(set(l1)&set(l2)))
 print("l1有，l2没有的元素有{}".format(set(l1)-set(l2)))
 print("l1l2内容不同的元素有{}".format(set(l1)^set(l2)))
-
 # In[ ]:
+
+
 # *2. 创建列表，内容为a-z,A-Z,0-9，并从中随机抽出6个字符作为验证码
 print("验证码：{}".format("".join(random.sample(list(string.ascii_letters)+list(string.digits),6))))
-
 # In[ ]:
+
+
 # *3. 随机生成1000个整数，数字范围[20,100]，升序输出所有不同的数字及其每个数字的重复次数
 list1=[random.randint(20,100) for var in range(1000)];list1.sort()
 dict1={var:list1.count(var) for var in list1}
@@ -371,6 +373,8 @@ print("升序输出所有不同的数字和每个数字重复的次数:\n")
 for key in dict1:
     print("{0}重复的次数：{1}".format(key,dict1[key]))
 # In[ ]:
+
+
 # *4. 随机生成100个卡号: 卡号以6102009开头， 后面3位依次是 （001， 002， 003， 100），生成关于银行卡号的字典， 默认每个卡号的初始密码为"redhat";输出卡号和密码信息， 格式如下: 
 # 卡号 密码
 # 6102009001 000000
@@ -378,8 +382,9 @@ print("卡号  密码")
 carDict={6102009000+var:"radhat" for var in range(1,101)}
 for key in carDict:
     print("{0}\t\t{1}".format(key,carDict[key]))
-
 # In[ ]:
+
+
 # *5. 根据输入的月份，打印该月份所属的季节。提示: 3,4,5 春季 6,7,8 夏季 9,10,11 秋季 12, 1, 2 冬季。
 try:
     inputMonth = int(input("请输入月份："))
@@ -390,6 +395,8 @@ try:
             print("输入的是:{}".format(key))
 except ValueError:print("请输入正确月份")
 # In[ ]:
+
+
 # *6. 已知names = [‘jane’,‘joe’,‘susan’,‘black’,‘leonaldo’] ，找出上述名字中长度大于4的名字,组成列表打印出来. ( for 循环遍历，与列表推导式 两种方法做)
 def forMethod(inputList):
     listOutput=[]
@@ -404,21 +411,33 @@ names =['jane','joe','susan','black','leonaldo']
 print("for循环遍历出来的：{}".format(forMethod(names)))
 print("列表推导出来的：{}".format(otherMethod(names)))
 # In[ ]:
+
+
 # *7.10以内大于4的数写入列表
 print("10以内大于4的数构成的列表：{}".format([var for var in range(10) if var>4]))
 # In[ ]:
+
+
 # *8.将10以内所有整数写入列表
 print("10以内所有整数构成的列表：{}".format([var for var in range(10) if isinstance(var,int)]))
 # In[ ]:
+
+
 # *9.将10以内所有整数的平方写入列表。
 print("10以内所有整数的平方构成的列表：{}".format([var**2 for var in range(10) if isinstance(var,int)]))
 # In[ ]:
+
+
 # *10.100以内所有的偶数写入列表.
 print("100以内所有整数构成的列表：{}".format([var for var in range(100) if isinstance(var,int) if var%2==0]))
 # In[ ]:
+
+
 # *11.使用列表推到式得出:0-30间能被3整除的数
 print("0-30间能被3整除的数：{}".format([var for var in range(1,31) if var%3==0]))
 # In[ ]:
+
+
 # *12.求M,N中矩阵对应元素的和与元素的乘积    (提示：使用2个for遍历)
 # m =[[1,2,3],  [4,5,6],  [7,8,9]] ，n =[[2,2,2],  [3,3,3], [4,4,4]]
 # 用两个for遍历的方式：
@@ -446,14 +465,18 @@ def numpyTimes(m,n):
 
 
 # In[ ]:
-# *13.找到嵌套列表中名字含有两个‘e’的所有名字：names=[['Tom','Billy','Jefferson','Andrew','Wesley','Steven','Joe'],['Alice','Jill','Ana','Wendy','Jennifer','Sherry','Eva']]   
+# *13.找到嵌套列表中名字含有两个‘e’的所有名字：names=[['Tom','Billy','Jefferson','Andrew','Wesley','Steven','Joe'],['Alice','Jill','Ana','Wendy','Jennifer','Sherry','Eva']]
 names=[['Tom','Billy','Jefferson','Andrew','Wesley','Steven','Joe'],['Alice','Jill','Ana','Wendy','Jennifer','Sherry','Eva']]
 print("嵌套列表中名字含有两个'2'的所有名字组成的列表：{}".format([var for i in names for var in i if var.count('e')==2]))
 # In[ ]:
+
+
 # *14.过滤掉长度小于3的字符串列表，并将剩下的转换成大写字母names = ['Bob','Tom','alice','Jerry','Wendy','Smith']
 names = ['Bob','Tom','alice','Jerry','Wendy','Smith']
 print("转换后的列表中的名字有：{}".format([i for i in names if len(i)>=3]).upper() )
 # In[ ]:
+
+
 # *15.对列表中每个数值逐个减去均值
 
 
@@ -491,13 +514,20 @@ try:
     else:print("登陆失败")
 except dropExcept:print("登陆成功")
 # In[ ]:
+
+
 # 元组  
 # *18. 有以下列表，nums = [2, 7, 11, 15, 1, 8]，请找到列表中任意相加等于9的元素集合，如：[(8, 1), (4, 5)]
 nums = [2, 7, 11, 15, 1, 8]
 print("满足条件的集合有：{}".format([(nums[i],nums[j]) for i in range(0,len(nums)) for j in range(i,len(nums)) if nums[i] + nums[j] == 9]))
 # In[ ]:
+
+
+# *19.求(x,y)其中x是0-5之间的偶数，y是0-5之间的奇数组成的元祖列表
 print("题目所求的元组列表为：{}".format([(x,y) for x in range(5) for y in range(5) if x%2==0 if y%2!=0]))
 # In[ ]:
+
+
 # 字典  
 # *20 创建一个空字典，输入学生姓名和成绩，并一一对应，当输入#退出
 studentDict={}
@@ -516,6 +546,8 @@ except dropExcept:
     for key in studentDict:
         print("{}\t\t\t\t{}".format(key,studentDict[key]))
 # In[ ]:
+
+
 # *21. 有如下值集合[11,22,33,44,55,66,77,88,99,90], 将所有大于66的值保存至字典的第一个key中，将小于66值保存至第二个key的值中.
 listInput=[11,22,33,44,55,66,77,88,99,90]
 key1List=[]
@@ -526,6 +558,8 @@ for var in listInput:
 outDict={'key1':key1List,'key2':key2List}
 outDict
 # In[ ]:
+
+
 # *22.统计重复单词的次数：此处认为单词之间以空格为分隔符，并且不包含,和. 要求用户输入一个英文句子，打印出每个单词及其重复的次数
 # inputSentense
 # inputList=inputSentense
@@ -536,12 +570,16 @@ for var in inputList:
 for key in inputDict:
     print("英语单词：{0}出现的次数:{1}".format(key,inputDict[key]))
 # In[ ]:
+
+
 # *23.数字重复统计。随机生成1000个整数，数字的范围[20，100]，升序输出所有的不同的数字及其每个数字重复的次数。
 inputList=[random.randint(20,100) for i in range(1000)];inputList.sort()
 outputDict={var:inputList.count(var) for var in inputList}
 for key in outputDict:
     print("数字:{}重复的次数为：{}".format(key,outputDict[key]))
 # In[ ]:
+
+
 # 集合  
 # *24. 明明想在学校中请一些同学一起做一项问卷调查，为了实验的客观性,他先用计算机生成了N个1～1000之间的随机整数(N<=1000),N是用户输入的，对于其中重复的数字，只保留一个，把其余相同的数字去掉，不同的数对应着不同的学生的学号，然后再把这些数从小到大排序，按照排好的顺序去找同学做调查，请你协助明明完成“去重”与排序工作. 
 try:
