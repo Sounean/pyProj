@@ -436,33 +436,17 @@ print("100以内所有整数构成的列表：{}".format([var for var in range(1
 # *11.使用列表推到式得出:0-30间能被3整除的数
 print("0-30间能被3整除的数：{}".format([var for var in range(1,31) if var%3==0]))
 # In[ ]:
-
-
 # *12.求M,N中矩阵对应元素的和与元素的乘积    (提示：使用2个for遍历)
 # m =[[1,2,3],  [4,5,6],  [7,8,9]] ，n =[[2,2,2],  [3,3,3], [4,4,4]]
 # 用两个for遍历的方式：
-def forSum(m,n):
-    listSum=[]
-    return listSum
-def forTimes(m,n):
-    listTimes=[]
-    return listTimes
-# 用numpy库来计算
-def numpySum(m,n):
-    listSum=[]
-    return listSum
-def numpyTimes(m,n):
-    listTimes=[]
-    return listTimes
-
-
-
-
-
-
-
-
-
+m =[[1,2,3],  [4,5,6],  [7,8,9]] ;n =[[2,2,2],  [3,3,3], [4,4,4]]
+listout=[]
+for listindex in range(len(m)):
+    listnew=[]
+    for var in range(len(m[listindex])):
+        listnew.append(m[listindex][var]*n[listindex][var])
+    listout.append(listnew)
+print(listout)
 
 # In[ ]:
 # *13.找到嵌套列表中名字含有两个‘e’的所有名字：names=[['Tom','Billy','Jefferson','Andrew','Wesley','Steven','Joe'],['Alice','Jill','Ana','Wendy','Jennifer','Sherry','Eva']]
@@ -475,16 +459,24 @@ print("嵌套列表中名字含有两个'2'的所有名字组成的列表：{}".
 names = ['Bob','Tom','alice','Jerry','Wendy','Smith']
 print("转换后的列表中的名字有：{}".format([i for i in names if len(i)>=3]).upper() )
 # In[ ]:
-
-
 # *15.对列表中每个数值逐个减去均值
-
-
-
-
-
-
-
+inputList=[]
+flag=True
+try:
+    while flag:
+        inputValue = input("请输入一个数字加入list，输入#结束输入：")
+        if inputValue == "#":
+            avg = int(sum(inputList) / len(inputList))
+            print(avg)
+            newli = [i - avg for i in inputList]
+            print(newli)
+            flag = False
+        else:
+            inputValue = int(inputValue)
+            inputList.append(inputValue)
+            print(inputList)
+            flag = True
+except ValueError:print("你输入的既不是数字也不是#")
 
 
 
